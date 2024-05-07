@@ -68,16 +68,17 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
                     node->parent = current;
                     break;
                 }
+                else if (!tree->lower_than(current->pair->key, key)) {
+                    current->pair->value = value;
+                    free(node);
+                    break;
+                }
                 current = current->right;
-            }
-            else {
-                current->pair->value = value;
-                free(node);
-                break;
             }
         }
     }
 }
+
 
 TreeNode * minimum(TreeNode * x){
 
