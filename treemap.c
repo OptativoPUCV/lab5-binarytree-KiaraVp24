@@ -123,7 +123,11 @@ Pair * upperBound(TreeMap * tree, void* key) {
     TreeNode* current = tree->root;
     TreeNode* ub = NULL;
     while (current != NULL) {
-        if (tree->lower_than(key, current->pair->key)) {
+        if (is_equal(tree, key, current->pair->key)) {
+            ub = current;
+            break;
+        }
+        else if (tree->lower_than(key, current->pair->key)) {
             ub = current;
             current = current->left;
         } else {
@@ -136,7 +140,6 @@ Pair * upperBound(TreeMap * tree, void* key) {
         return ub->pair;
     }
 }
-
 
 Pair * firstTreeMap(TreeMap * tree) {
     return NULL;
