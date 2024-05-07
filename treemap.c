@@ -70,6 +70,11 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
                 }
                 current = current->right;
             }
+            else {
+                current->pair->value = value;
+                free(node);
+                break;
+            }
         }
     }
 }
